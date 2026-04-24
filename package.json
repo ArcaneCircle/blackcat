@@ -3,7 +3,6 @@
   "type": "module",
   "scripts": {
     "start": "vite --port 3000",
-    "fix": "prettier --write .",
     "check": "tsc",
     "build": "vite build",
     "sprite": "node bin/spritesmith"
