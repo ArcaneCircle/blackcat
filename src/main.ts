@@ -1,3 +1,5 @@
+import "@webxdc/highscores";
+
 import SPRITESHEET from "./asset/texture.json"
 import { CENTER } from "./config"
 import { createContext, renderContext } from "./modules/2d/context"
@@ -15,6 +17,8 @@ import { $ } from "./modules/utils"
 import { initGame } from "./scenes/game"
 
 import "./main.css"
+
+await window.highscores.init()
 
 const ROOT = createEntity(["root", { t: [, CENTER] }])
 

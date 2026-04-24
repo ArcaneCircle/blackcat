@@ -183,7 +183,6 @@ const highText = getChild(overlay, "high")
 
 let skipToken: TTimerToken
 let score: number = 0
-let high: number = storage("high") || 0
 let time: number = 0
 
 export function initHud() {
@@ -245,11 +244,8 @@ async function onStart() {
 
 async function onDeath() {
     unschedule(update)
-    if (score > high) {
-        high = score
-        storage("high", high)
-    }
-    setText(highText, "High Score " + high)
+    window.highscores.setScore(score)
+    setText(highText, "High Score " + window.highscores.getScore())
     skipToken = [1]
     await timer(
         0.3,

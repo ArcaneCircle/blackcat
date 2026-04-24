@@ -15,5 +15,8 @@
     "ect-bin": "^1.4.1",
     "glob": "^10.4.2",
     "spritesmith": "^3.5.1"
+  },
+  "dependencies": {
+    "@webxdc/highscores": "^5.3.0"
   }
 }
