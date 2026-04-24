@@ -10,37 +10,36 @@ import { textRender } from "./modules/entity/components/text"
 import { tilemapRender } from "./modules/entity/components/tilemap"
 import { transformSystem } from "./modules/entity/components/transform"
 import { addChild, createEntity, traverse } from "./modules/entity/entity"
-import { schedule, SCHEDULER, update } from "./modules/scheduler"
+import { schedule, update } from "./modules/scheduler"
 import { $ } from "./modules/utils"
 import { initGame } from "./scenes/game"
 
-DEBUG && new EventSource("/esbuild").addEventListener("change", () => location.reload())
-DEBUG && ((window as any).SCHEDULER = SCHEDULER)
+import "./main.css"
 
 const ROOT = createEntity(["root", { t: [, CENTER] }])
 
 schedule((delta) => {
-    traverse(
-        ROOT,
-        (entity) => {
-            transformSystem(entity)
-            polygonSystem(entity)
-            colorSystem(entity)
-        },
-        (entity) => {
-            polygonRender(entity)
-            tilemapRender(entity)
-            spriteRender(entity)
-            textRender(entity)
-            animSystem(entity, delta)
-            bodySystem(entity, delta)
-        }
-    )
-    renderContext()
-    clearCache()
+  traverse(
+    ROOT,
+    (entity) => {
+      transformSystem(entity)
+      polygonSystem(entity)
+      colorSystem(entity)
+    },
+    (entity) => {
+      polygonRender(entity)
+      tilemapRender(entity)
+      spriteRender(entity)
+      textRender(entity)
+      animSystem(entity, delta)
+      bodySystem(entity, delta)
+    }
+  )
+  renderContext()
+  clearCache()
 }, 9)
 
 createContext($<HTMLCanvasElement>("canvas"), SPRITESHEET, () => {
-    addChild(ROOT, initGame())
-    update()
+  addChild(ROOT, initGame())
+  update()
 })

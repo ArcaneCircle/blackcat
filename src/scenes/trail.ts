@@ -4,12 +4,12 @@ import { setAlpha, setColor } from "../modules/entity/components/color"
 import { setFrame } from "../modules/entity/components/sprite"
 import { getPosition, setPosition, setScale } from "../modules/entity/components/transform"
 import {
-    addChild,
-    createEntity,
-    getChildren,
-    removeChild,
-    TEntity,
-    TEntityProps
+  addChild,
+  createEntity,
+  getChildren,
+  removeChild,
+  TEntity,
+  TEntityProps
 } from "../modules/entity/entity"
 import { rnd } from "../modules/math"
 import { kill, timer, TTimerToken } from "../modules/scheduler"
@@ -19,12 +19,12 @@ const trail = createEntity(["tail"])
 const color = [0.6, 0, 0.3]
 const particlePool: TEntity[] = []
 const particlePrefab: TEntityProps = [
-    "ptc",
-    {
-        b: [],
-        t: [[1.5, 1.5]],
-        s: SPRITE_PTC
-    }
+  "ptc",
+  {
+    b: [],
+    t: [[1.5, 1.5]],
+    s: SPRITE_PTC
+  }
 ]
 
 let skipToken: TTimerToken
